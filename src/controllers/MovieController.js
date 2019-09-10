@@ -5,5 +5,8 @@ export default class MovieController {
     this.movieService = new MovieService();
   }
 
-  show() {}
+  async show() {
+    const randomMovieId = await this.movieService.getRandom();
+    return randomMovieId;
+  }
 }
