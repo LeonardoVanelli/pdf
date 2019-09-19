@@ -25,4 +25,10 @@ describe('Services', () => {
     expect(movieId).not.toBeUndefined();
     expect(movieId).toBeGreaterThan(0);
   });
+
+  it('should fetch all the details of a movie by id', async () => {
+    const movieDetails = await movieService.getDetails(256835);
+
+    expect(movieDetails.id).toBe(256835);
+  });
 });
