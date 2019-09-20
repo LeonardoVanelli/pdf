@@ -1,4 +1,4 @@
-import Movie from '../../models/Movie';
+import Movie from '../../src/app/models/Movie';
 
 describe('Tests of model', () => {
   it('should return model', () => {

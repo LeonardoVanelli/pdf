@@ -1,5 +1,5 @@
-import MovieController from '../../controllers/MovieController';
-import MovieService from '../../services/MovieService';
+import MovieController from '../../src/app/controllers/MovieController';
+import MovieService from '../../src/app/services/MovieService';
 
 const movieController = new MovieController();
 const movieService = new MovieService();
