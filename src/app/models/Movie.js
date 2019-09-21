@@ -1,6 +1,7 @@
 export default class Movie {
   constructor() {
     this.id = 0;
+    this.title = '';
     this.overview = '';
     this.releaseDate = null;
     this.productionCompanies = null;
@@ -12,6 +13,11 @@ export default class Movie {
     this.trailer = null;
     this.poster_path = null;
     this.country = '';
-    this.certificatio = 0;
+  }
+
+  get certification() {
+    if (this.releaseDate && this.releaseDate.certification !== '')
+      return this.releaseDate.certification;
+    return null;
   }
 }
