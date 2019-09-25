@@ -1,13 +1,12 @@
-import MovieService from '../services/MovieService';
+import DetailsMovieService from '../services/DetailsMovieService';
+import RandomMovieService from '../services/RandomMovieService';
 
-export default class MovieController {
-  constructor() {
-    this.movieService = new MovieService();
-  }
-
+class MovieController {
   async show() {
-    const randomMovieId = await this.movieService.getRandom();
-    const movieDetails = await this.movieService.getDetails(randomMovieId);
+    const randomMovieId = await RandomMovieService.run();
+    const movieDetails = await DetailsMovieService.run(randomMovieId);
     return movieDetails;
   }
 }
+
+export default new MovieController();
