@@ -1,4 +1,4 @@
-export default class Movie {
+class Movie {
   constructor() {
     this.id = 0;
     this.title = '';
@@ -21,3 +21,5 @@ export default class Movie {
     return null;
   }
 }
+
+export default new Movie();
