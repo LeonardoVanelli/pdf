@@ -6,7 +6,7 @@ class DetailsMovieService {
   async run(movieId) {
     const response = await api.get(`movie/${movieId}`, {
       params: {
-        api_key: '236b2a1f134505cda3327cc49273e2ff',
+        api_key: process.env.REACT_APP_TMDB_KEY,
         language: 'pt-BR',
         append_to_response: 'release_dates,videos,images,credits',
       },
@@ -41,7 +41,7 @@ class DetailsMovieService {
     if (videos.length === 0) {
       const response = await this.api.get(`movie/${movieId}/videos`, {
         params: {
-          api_key: '236b2a1f134505cda3327cc49273e2ff',
+          api_key: process.env.REACT_APP_TMDB_KEY,
         },
       });
       videos = response.data;
