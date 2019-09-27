@@ -1,8 +1,6 @@
-import MovieController from '../../src/app/controllers/MovieController';
-import MovieService from '../../src/app/services/MovieService';
-
-const movieController = new MovieController();
-const movieService = new MovieService();
+import movieController from '../../src/app/controllers/MovieController';
+import DetailsMovieService from '../../src/app/services/DetailsMovieService';
+import randomMovieService from '../../src/app/services/RandomMovieService';
 
 describe('controllers', () => {
   it('should return a instance of MovieController', () => {
@@ -20,14 +18,14 @@ describe('controllers', () => {
 
 describe('Services', () => {
   it('should return the id of one random movie', async () => {
-    const movieId = await movieService.getRandom();
+    const movieId = await randomMovieService.run();
 
     expect(movieId).not.toBeUndefined();
     expect(movieId).toBeGreaterThan(0);
   });
 
   it('should fetch all the details of a movie by id', async () => {
-    const movieDetails = await movieService.getDetails(256835);
+    const movieDetails = await DetailsMovieService.run(256835);
 
     expect(movieDetails.id).toBe(256835);
   });

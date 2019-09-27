@@ -30,7 +30,7 @@ class RandomMovieService {
 
   createFilter(certificatio, maxYear, minYear, genres) {
     const params = {
-      api_key: '236b2a1f134505cda3327cc49273e2ff',
+      api_key: process.env.REACT_APP_TMDB_KEY,
       language: 'pt-BR',
       region: 'BR',
       certification_country: 'BR',
