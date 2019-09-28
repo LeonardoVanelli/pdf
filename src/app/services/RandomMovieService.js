@@ -33,6 +33,7 @@ class RandomMovieService {
       api_key: process.env.REACT_APP_TMDB_KEY,
       language: 'pt-BR',
       region: 'BR',
+      'vote_average.gte': 4,
       certification_country: 'BR',
       'certification.lte': certificatio,
       adult: true,
