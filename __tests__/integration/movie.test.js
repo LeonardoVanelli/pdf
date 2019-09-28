@@ -27,9 +27,17 @@ describe('Services', () => {
   });
 
   it('should fetch all the details of a movie by id', async () => {
-    const movieDetails = await detailsMovieService.run(256835);
+    const movieId = 256835;
+    const movieDetails = await detailsMovieService.run(movieId);
 
-    expect(movieDetails.id).toBe(256835);
+    expect(movieDetails.id).toBe(movieId);
+  });
+
+  it('should fetch all the details of a movie by id with trailer in imdb api', async () => {
+    const movieId = 381719;
+    const movieDetails = await detailsMovieService.run(movieId);
+
+    expect(movieDetails.id).toBe(movieId);
   });
 
   it('should look for a youtube api movie trailer by name', async () => {
