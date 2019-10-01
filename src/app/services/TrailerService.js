@@ -10,7 +10,7 @@ class TrailerService {
           type: 'video',
           maxResults: 1,
           q: `${movieTitle} ${movieReleaseDate} trailer`,
-          key: 'AIzaSyBzRHiSJkHRlkTTLKD3pP_BZe3ZhCeBgnk',
+          key: process.env.REACT_APP_GYT_KEY,
         },
       }
     );
