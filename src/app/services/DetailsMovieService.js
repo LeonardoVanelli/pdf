@@ -2,6 +2,8 @@ import api from './api';
 
 import movie from '../models/Movie';
 
+import trailerService from './TrailerService';
+
 class DetailsMovieService {
   async run(movieId) {
     const response = await api.get(`movie/${movieId}`, {
@@ -19,7 +21,18 @@ class DetailsMovieService {
     );
     [movie.releaseDate] = releaseDate.release_dates;
 
-    movie.trailer = await this.getTrailer(movieDetails.videos, movieDetails.id);
+    if (movieDetails.videos.results.length === 0) {
+      movie.trailer = await trailerService.run(
+        movieDetails.title,
+        movie.releaseYear
+      );
+    } else {
+      const videoTrailer = movieDetails.videos.results.find(
+        video => video.type === 'Trailer'
+      );
+      movie.trailer = videoTrailer.key;
+    }
+
     movie.genres = movieDetails.genres;
 
     movie.id = movieDetails.id;
@@ -28,26 +41,12 @@ class DetailsMovieService {
     movie.productionCompanies = movieDetails.production_companies;
     movie.credits = movieDetails.credits;
     movie.runtime = movieDetails.runtime;
-    movie.vote_average = movieDetails.vote_average;
-    movie.vote_count = movieDetails.vote_count;
+    movie.voteAverage = movieDetails.vote_average;
+    movie.voteCount = movieDetails.vote_count;
     movie.country = movieDetails.original_language;
-    movie.poster_path = movieDetails.poster_path;
+    movie.posterPath = movieDetails.poster_path;
 
     return movie;
-  }
-
-  async getTrailer(responseVideos, movieId) {
-    let videos = responseVideos;
-    if (videos.length === 0) {
-      const response = await this.api.get(`movie/${movieId}/videos`, {
-        params: {
-          api_key: process.env.REACT_APP_TMDB_KEY,
-        },
-      });
-      videos = response.data;
-    }
-    const trailer = videos.results.find(video => video.type === 'Trailer');
-    return trailer;
   }
 }
 
