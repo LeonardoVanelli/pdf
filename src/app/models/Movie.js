@@ -4,8 +4,8 @@ class Movie {
     this.title = '';
     this.overview = '';
     this.releaseDate = null;
-    this.productionCompanies = null;
-    this.genres = null;
+    this.productionCompanies = [];
+    this.genres = [];
     this.credits = null;
     this.runtime = 0;
     this.voteAverage = 0;
